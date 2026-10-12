@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Dino Runner - Chrome Dino Arcade</title>
+  <meta name="description" content="An arcade-style Dino Runner web game with day-night cycles, synthesized 8-bit sound effects, and responsive controls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="arcade-wrapper">
+    <header class="game-header">
+      <div class="title-badge">
+        <span class="pulse-dot"></span>
+        <span>ARCADE RUNNER</span>
+      </div>
+      <h1 class="game-title">CHRONO DINO</h1>
+      <div class="header-actions">
+        <button id="soundToggleBtn" class="pill-btn" aria-label="Toggle sound" title="Toggle Sound">
+          <span id="soundIcon">🔊</span>
+          <span id="soundText">Sound ON</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="canvas-container" id="canvasContainer">
+      <div class="hud">
+        <div class="hud-item score-box">
+          <span class="hud-label">HI SCORE</span>
+          <span id="hiScoreVal" class="hud-value">00000</span>
+        </div>
+        <div class="hud-item score-box current">
+          <span class="hud-label">SCORE</span>
+          <span id="scoreVal" class="hud-value">00000</span>
+        </div>
+        <div class="hud-item speed-box">
+          <span class="hud-label">SPEED</span>
+          <span id="speedVal" class="hud-value">1.0x</span>
+        </div>
+      </div>
+
+      <canvas id="gameCanvas" width="900" height="350"></canvas>
+
+      <!-- Overlay screens -->
+      <div id="startOverlay" class="screen-overlay active">
+        <div class="overlay-card">
+          <div class="dino-mascot-preview">🦖</div>
+          <h2>READY TO RUN?</h2>
+          <p class="flavor-text">Dodge desert cacti & sky pterodactyls. Survive the day and night!</p>
+          <button id="startBtn" class="cta-btn pulse-anim">PRESS SPACE TO PLAY</button>
+          <div class="tips-row">
+            <span><kbd>Space</kbd> / <kbd>↑</kbd> Jump</span>
+            <span><kbd>↓</kbd> Duck</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="gameOverOverlay" class="screen-overlay hidden">
+        <div class="overlay-card game-over-card">
+          <div class="skull-badge">💥</div>
+          <h2>GAME OVER</h2>
+          <div class="final-stats">
+            <div>Final Score: <strong id="finalScoreVal">0</strong></div>
+            <div id="newBestBadge" class="new-best hidden">✨ NEW RECORD! ✨</div>
+          </div>
+          <button id="restartBtn" class="cta-btn pulse-anim">TRY AGAIN (SPACE)</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Mobile / Touch Controls Bar -->
+    <section class="touch-controls" id="touchControls" aria-label="Touch Controls">
+      <button id="duckTouchBtn" class="touch-btn duck-btn" aria-label="Duck">
+        <span>🦆 DUCK</span>
+        <small>Hold</small>
+      </button>
+      <button id="jumpTouchBtn" class="touch-btn jump-btn" aria-label="Jump">
+        <span>⚡ JUMP</span>
+        <small>Tap</small>
+      </button>
+    </section>
+
+    <footer class="game-footer">
+      <div class="shortcuts-legend">
+        <span><kbd>Space</kbd> / <kbd>↑</kbd> or <kbd>Tap</kbd> to Jump</span>
+        <span><kbd>↓</kbd> or <kbd>S</kbd> to Duck</span>
+        <span><kbd>P</kbd> to Pause</span>
+        <span><kbd>M</kbd> to Mute</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
